@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de espuma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ingrese los detalles para el corte</h1>
+    <form action="/calcular" method="post">
+        <label for="largo">Largo (en cm):</label>
+        <input type="number" id="largo" name="largo" min="1"><br><br>
+
+        <label for="ancho">Ancho (en cm):</label>
+        <input type="number" id="ancho" name="ancho" min="1"><br><br>
+
+        <label for="grosor">Grosor (entre 5 y 20 cm):</label>
+        <input type="number" id="grosor" name="grosor" min="5" max="20"><br><br>
+
+        <label for="densidad">Densidad:</label>
+        <select id="densidad" name="densidad">
+            <option value="D21">D21</option>
+            <option value="D24">D24</option>
+            <option value="D30">D30</option>
+        </select><br><br>
+
+        <!-- Sección para mostrar el mensaje de advertencia -->
+        {% if mensaje %}
+            <p style="color: red;">{{ mensaje }}</p>
+        {% endif %}
+                       
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>
+
